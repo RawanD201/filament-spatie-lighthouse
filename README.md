@@ -5,6 +5,8 @@
 [![PHP Version](https://img.shields.io/packagist/php-v/rawand201/filament-spatie-lighthouse.svg?style=flat-square)](https://packagist.org/packages/rawand201/filament-spatie-lighthouse)
 [![License](https://img.shields.io/packagist/l/rawand201/filament-spatie-lighthouse.svg?style=flat-square)](LICENSE)
 
+![Banner](art/banner.png)
+
 A [Filament](https://filamentphp.com) plugin that integrates [spatie/lighthouse-php](https://github.com/spatie/lighthouse-php) to run Google Lighthouse audits directly from your admin panel — view scores, performance metrics, failed audits, audit history, and full HTML reports without leaving Filament.
 
 ---
@@ -34,14 +36,14 @@ A [Filament](https://filamentphp.com) plugin that integrates [spatie/lighthouse-
 
 ## Requirements
 
-| Requirement | Version |
-|---|---|
-| PHP | `^8.2` |
-| Laravel | `^11.0 \| ^12.0` |
-| Filament | `^4.0 \| ^5.0` |
-| spatie/lighthouse-php | `^2.0` |
-| Node.js | any recent LTS |
-| Chrome / Chromium | any recent version |
+| Requirement           | Version            |
+| --------------------- | ------------------ |
+| PHP                   | `^8.2`             |
+| Laravel               | `^11.0 \| ^12.0`   |
+| Filament              | `^4.0 \| ^5.0`     |
+| spatie/lighthouse-php | `^2.0`             |
+| Node.js               | any recent LTS     |
+| Chrome / Chromium     | any recent version |
 
 > **Note:** `spatie/lighthouse-php` requires Node.js and a Chromium-based browser installed on the server running audits. See [their documentation](https://github.com/spatie/lighthouse-php#requirements) for setup.
 
@@ -94,6 +96,7 @@ Once installed, navigate to the **Lighthouse Results** page in your Filament pan
 3. Display category scores, performance metrics, and failed audits
 
 Each row in the results table has actions to:
+
 - **View** the full result detail page
 - **View HTML Report** — opens the native Lighthouse HTML report inline
 - **Download HTML Report** — downloads the report as a `.html` file
@@ -116,14 +119,14 @@ FilamentSpatieLighthousePlugin::make()
 
 ### All available methods
 
-| Method | Type | Default | Description |
-|---|---|---|---|
-| `navigationGroup(string\|Closure\|null)` | `static` | translation key | Navigation group label |
-| `navigationLabel(string\|Closure\|null)` | `static` | translation key | Nav item label |
-| `navigationIcon(string\|Closure)` | `static` | `heroicon-o-chart-bar` | Nav item icon |
-| `navigationSort(int\|Closure)` | `static` | `1` | Sort order within group |
-| `authorize(bool\|Closure)` | `static` | `true` | Access control callback |
-| `usingPage(string)` | `static` | `LighthouseResults::class` | Custom page class |
+| Method                                   | Type     | Default                    | Description             |
+| ---------------------------------------- | -------- | -------------------------- | ----------------------- |
+| `navigationGroup(string\|Closure\|null)` | `static` | translation key            | Navigation group label  |
+| `navigationLabel(string\|Closure\|null)` | `static` | translation key            | Nav item label          |
+| `navigationIcon(string\|Closure)`        | `static` | `heroicon-o-chart-bar`     | Nav item icon           |
+| `navigationSort(int\|Closure)`           | `static` | `1`                        | Sort order within group |
+| `authorize(bool\|Closure)`               | `static` | `true`                     | Access control callback |
+| `usingPage(string)`                      | `static` | `LighthouseResults::class` | Custom page class       |
 
 ---
 
@@ -361,10 +364,10 @@ Or in `config/filament-spatie-lighthouse.php`:
 
 ### How it works
 
-| Mode | `raw_results` column | `raw_result_path` column |
-|---|---|---|
-| `database` (default) | Full JSON blob | `null` |
-| `filesystem` | `null` | Path on disk (e.g. `lighthouse-results/abc123-2025-01-01.json`) |
+| Mode                 | `raw_results` column | `raw_result_path` column                                        |
+| -------------------- | -------------------- | --------------------------------------------------------------- |
+| `database` (default) | Full JSON blob       | `null`                                                          |
+| `filesystem`         | `null`               | Path on disk (e.g. `lighthouse-results/abc123-2025-01-01.json`) |
 
 The HTML report view and download actions transparently resolve the raw results from either location — no change is needed to how you use the plugin.
 
@@ -500,12 +503,12 @@ X-Lighthouse-Token: your-secret-token
 
 ### Available endpoints
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/{prefix}/health` | No | Health check |
-| `GET` | `/{prefix}/latest?url=...` | Yes | Latest result for a URL |
-| `GET` | `/{prefix}/results` | Yes | All results (paginated) |
-| `GET` | `/{prefix}/results/{id}` | Yes | Single result by ID |
+| Method | Endpoint                   | Auth | Description             |
+| ------ | -------------------------- | ---- | ----------------------- |
+| `GET`  | `/{prefix}/health`         | No   | Health check            |
+| `GET`  | `/{prefix}/latest?url=...` | Yes  | Latest result for a URL |
+| `GET`  | `/{prefix}/results`        | Yes  | All results (paginated) |
+| `GET`  | `/{prefix}/results/{id}`   | Yes  | Single result by ID     |
 
 ---
 
@@ -564,11 +567,11 @@ Records older than `keep_history_for_days` days (default: 30) are deleted.
 
 The plugin dispatches three events during the audit lifecycle. All events are queue-safe (no non-serializable objects).
 
-| Event | When | Properties |
-|---|---|---|
-| `AuditStartingEvent` | Just before the audit runs | `$url`, `$categories`, `$formFactor`, `$userId` |
-| `AuditEndedEvent` | Audit completed successfully | `$url`, `$scores` (array, 0–100 per category), `$userId` |
-| `AuditFailedEvent` | Audit threw an exception | `$url`, `$exception`, `$userId` |
+| Event                | When                         | Properties                                               |
+| -------------------- | ---------------------------- | -------------------------------------------------------- |
+| `AuditStartingEvent` | Just before the audit runs   | `$url`, `$categories`, `$formFactor`, `$userId`          |
+| `AuditEndedEvent`    | Audit completed successfully | `$url`, `$scores` (array, 0–100 per category), `$userId` |
+| `AuditFailedEvent`   | Audit threw an exception     | `$url`, `$exception`, `$userId`                          |
 
 ### Listening to events
 
