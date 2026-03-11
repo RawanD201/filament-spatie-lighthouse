@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+/* Scan plugin blade views for Tailwind classes */
+@source '../views/**/*.blade.php';
+
+@source '../../src/**/*.php';
+
+/* Configure dark mode to work with Filament's .dark class */
+@variant dark (&:where(.dark, .dark *));
