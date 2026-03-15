@@ -39,13 +39,20 @@ class DatabaseResultStore implements ResultStore
 
     public function latestResults(?string $url = null): ?StoredAuditResults
     {
-        $query = LighthouseAuditResult::query()->latest();
+        // Use orderByDesc('id') instead of latest() so MySQL can traverse the
+        // clustered primary-key index without a sort buffer — avoiding OOM
+        // when raw_results rows are large.
+        $latestId = LighthouseAuditResult::query()
+            ->select('id')
+            ->when($url, fn ($q) => $q->where('url', $url))
+            ->orderByDesc('id')
+            ->value('id');
 
-        if ($url) {
-            $query->where('url', $url);
+        if (! $latestId) {
+            return null;
         }
 
-        $latest = $query->first();
+        $latest = LighthouseAuditResult::find($latestId);
 
         if (! $latest) {
             return null;
@@ -74,7 +81,9 @@ class DatabaseResultStore implements ResultStore
 
     public function getHistory(?string $url = null, int $limit = 10): array
     {
-        $query = LighthouseAuditResult::query()->latest();
+        $query = LighthouseAuditResult::query()
+            ->select(['id', 'url', 'scores', 'performance_score', 'accessibility_score', 'best_practices_score', 'seo_score', 'finished_at', 'created_at'])
+            ->orderByDesc('id');
 
         if ($url) {
             $query->where('url', $url);
