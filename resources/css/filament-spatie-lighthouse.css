@@ -1,4 +1,4 @@
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
 
 /* Scan plugin blade views for Tailwind classes */
 @source '../views/**/*.blade.php';
@@ -8,10 +8,11 @@
 /* Configure dark mode to work with Filament's .dark class */
 @variant dark (&:where(.dark, .dark *));
 
-/* Never override the app's font — always inherit */
+/* Restore Filament's configured font after Tailwind preflight override.
+   --default-font-family is the CSS variable Filament sets via ->font() on the panel. */
 @layer base {
-    * {
-        font-family: inherit;
+    html, :host {
+        font-family: var(--default-font-family, inherit);
     }
 }
 
