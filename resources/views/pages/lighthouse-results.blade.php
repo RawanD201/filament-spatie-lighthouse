@@ -5,14 +5,7 @@
 @endphp
 
 <x-filament-panels::page>
-    @php
-        try {
-            $lighthouseCssHref = \Filament\Support\Facades\FilamentAsset::getStyleHref('filament-spatie-lighthouse-styles', package: 'filament-spatie-lighthouse');
-        } catch (\Throwable) {
-            $lighthouseCssHref = null;
-        }
-    @endphp
-    <div x-data="{}" @if($lighthouseCssHref) x-load-css="[@js($lighthouseCssHref)]" @endif>
+    <div>
 
         {{-- ───────────────────── Results Table ───────────────────── --}}
         <div class="mb-8">
