@@ -7,6 +7,9 @@
 /* Configure dark mode to work with Filament's .dark class */
 @variant dark (&:where(.dark, .dark *));
 
+/* Prevent Tailwind's container breakpoint max-widths from shrinking Filament's page layout */
+.container { max-width: none !important; }
+
 /*
  * Use @theme inline so values are hardcoded into utility classes
  * and NOT output as CSS variables on :root.
