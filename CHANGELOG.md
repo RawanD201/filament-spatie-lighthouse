@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-03-15
+
+### Added
+- Central Kurdish (Sorani / ckb) translation
+
+## [1.0.4] - 2026-03-15
+
+### Fixed
+- Build and ship compiled CSS so styles are applied correctly
+
+## [1.0.3] - 2026-03-15
+
+### Fixed
+- Check all configured auth guards to support any Filament panel guard on report routes
+
+## [1.0.2] - 2026-03-15
+
+### Fixed
+- Replace `auth` middleware with guard-agnostic check to avoid missing `login` route error
+
 ## [1.0.1] - 2026-03-15
 
 ### Fixed
