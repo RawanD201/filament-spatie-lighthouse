@@ -1,18 +1,44 @@
-@import 'tailwindcss';
+@import 'tailwindcss/utilities';
 
 /* Scan plugin blade views for Tailwind classes */
 @source '../views/**/*.blade.php';
-
 @source '../../src/**/*.php';
 
 /* Configure dark mode to work with Filament's .dark class */
 @variant dark (&:where(.dark, .dark *));
 
-/* Restore Filament's configured font after Tailwind preflight override.
-   --default-font-family is the CSS variable Filament sets via ->font() on the panel. */
-@layer base {
-    html, :host {
-        font-family: var(--default-font-family, inherit);
-    }
+/*
+ * Use @theme inline so values are hardcoded into utility classes
+ * and NOT output as CSS variables on :root.
+ * This prevents overriding the app's --font-sans / --default-font-family.
+ */
+@theme inline {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --color-gray-50: oklch(98.5% .002 247.839);
+    --color-gray-100: oklch(96.7% .003 264.542);
+    --color-gray-200: oklch(92.8% .006 264.531);
+    --color-gray-300: oklch(87.2% .01 258.338);
+    --color-gray-400: oklch(70.7% .022 261.325);
+    --color-gray-500: oklch(55.1% .027 264.364);
+    --color-gray-600: oklch(44.6% .03 256.802);
+    --color-gray-700: oklch(37.3% .034 259.733);
+    --color-gray-800: oklch(27.8% .033 256.848);
+    --color-gray-900: oklch(21% .034 264.665);
+    --spacing: .25rem;
+    --text-xs: .75rem;
+    --text-xs--line-height: calc(1 / .75);
+    --text-sm: .875rem;
+    --text-sm--line-height: calc(1.25 / .875);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --radius-lg: .5rem;
+    --ease-in: cubic-bezier(.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, .2, 1);
+    --default-transition-duration: .15s;
+    --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
