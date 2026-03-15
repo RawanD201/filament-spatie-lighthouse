@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
 /* Scan plugin blade views for Tailwind classes */
 @source '../views/**/*.blade.php';
@@ -9,10 +8,10 @@
 /* Configure dark mode to work with Filament's .dark class */
 @variant dark (&:where(.dark, .dark *));
 
-/* Arabic / Kurdish font support */
+/* RTL direction for Arabic-script languages — font is intentionally not set here,
+   use your app's global font stack for Kurdish/Arabic rendering */
 :lang(ckb),
 :lang(ar),
 :lang(ku) {
-    font-family: 'Noto Naskh Arabic', ui-sans-serif, system-ui, sans-serif;
     direction: rtl;
 }
