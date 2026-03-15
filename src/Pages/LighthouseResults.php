@@ -191,7 +191,11 @@ class LighthouseResults extends Page implements HasTable
         $pollInterval = config('filament-spatie-lighthouse.display.table_poll_interval', '30s');
 
         $table = $table
-            ->query(LighthouseAuditResult::query()->latest())
+            ->query(
+                LighthouseAuditResult::query()
+                    ->select(['id', 'url', 'performance_score', 'accessibility_score', 'best_practices_score', 'seo_score', 'finished_at', 'created_at'])
+                    ->latest()
+            )
             ->columns($this->getTableColumns())
             ->recordActions($this->getTableRecordActions())
             ->filters($this->getTableFilters())
