@@ -11,7 +11,7 @@ class LighthouseReportController extends Controller
 {
     public function show($id)
     {
-        abort_unless(auth()->check(), 403);
+        abort_unless($this->isAuthenticated(), 403);
         $record = LighthouseAuditResult::findOrFail($id);
         $rawResults = $this->resolveRawResults($record);
 
@@ -28,7 +28,7 @@ class LighthouseReportController extends Controller
 
     public function download($id)
     {
-        abort_unless(auth()->check(), 403);
+        abort_unless($this->isAuthenticated(), 403);
         $record = LighthouseAuditResult::findOrFail($id);
         $rawResults = $this->resolveRawResults($record);
 
@@ -44,6 +44,17 @@ class LighthouseReportController extends Controller
         }, $filename, [
             'Content-Type' => 'text/html',
         ]);
+    }
+
+    protected function isAuthenticated(): bool
+    {
+        foreach (array_keys(config('auth.guards', [])) as $guard) {
+            if (auth()->guard($guard)->check()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function resolveRawResults(LighthouseAuditResult $record): array
