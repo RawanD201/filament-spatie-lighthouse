@@ -5,7 +5,7 @@ use FilamentSpatieLighthouse\Http\Controllers\LighthouseReportController;
 use Illuminate\Support\Facades\Route;
 
 // HTML Report Routes (protected by Filament auth)
-Route::middleware(['web', 'auth'])->group(function () {
+Route::middleware(['web'])->group(function () {
     Route::get('/lighthouse-reports/{id}', [LighthouseReportController::class, 'show'])
         ->name('filament-spatie-lighthouse.report.show');
     

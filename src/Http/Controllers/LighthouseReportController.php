@@ -11,6 +11,7 @@ class LighthouseReportController extends Controller
 {
     public function show($id)
     {
+        abort_unless(auth()->check(), 403);
         $record = LighthouseAuditResult::findOrFail($id);
         $rawResults = $this->resolveRawResults($record);
 
@@ -27,6 +28,7 @@ class LighthouseReportController extends Controller
 
     public function download($id)
     {
+        abort_unless(auth()->check(), 403);
         $record = LighthouseAuditResult::findOrFail($id);
         $rawResults = $this->resolveRawResults($record);
 
