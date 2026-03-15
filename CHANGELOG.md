@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-03-15
+
+### Fixed
+- Fix font override: use `@theme inline` so plugin CSS does not set `--font-sans` on `:root`
+- Fix page layout: override `.container` max-width so Filament's page is not squeezed
+- Fix responsive grid: add breakpoints and shadow values to `@theme inline`
+
 ## [1.0.6] - 2026-03-15
 
 ### Fixed
