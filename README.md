@@ -42,10 +42,17 @@ A [Filament](https://filamentphp.com) plugin that integrates [spatie/lighthouse-
 | Laravel               | `^11.0 \| ^12.0`   |
 | Filament              | `^4.0 \| ^5.0`     |
 | spatie/lighthouse-php | `^2.0`             |
-| Node.js               | any recent LTS     |
+| Node.js               | `^18.0 \| ^20.0 \| ^22.0` |
+| `lighthouse` (npm)    | `^12.0`            |
 | Chrome / Chromium     | any recent version |
 
-> **Note:** `spatie/lighthouse-php` requires Node.js and a Chromium-based browser installed on the server running audits. See [their documentation](https://github.com/spatie/lighthouse-php#requirements) for setup.
+> **Note:** The `lighthouse` npm package must be installed on the server. Run:
+> ```bash
+> npm install -g lighthouse
+> ```
+> Then verify: `npx lighthouse --version`
+>
+> `spatie/lighthouse-php` also requires a Chromium-based browser. See [their documentation](https://github.com/spatie/lighthouse-php#requirements) for full setup.
 
 ---
 
