@@ -8,3 +8,10 @@
 /* Configure dark mode to work with Filament's .dark class */
 @variant dark (&:where(.dark, .dark *));
 
+/* Never override the app's font — always inherit */
+@layer base {
+    * {
+        font-family: inherit;
+    }
+}
+

@@ -2,6 +2,8 @@
 
 namespace FilamentSpatieLighthouse;
 
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use FilamentSpatieLighthouse\Console\Kernel as LighthouseKernel;
 use FilamentSpatieLighthouse\Console\ListLighthouseAuditsCommand;
 use FilamentSpatieLighthouse\Console\RunLighthouseAuditCommand;
@@ -53,6 +55,14 @@ class FilamentSpatieLighthouseServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        $cssPath = __DIR__ . '/../resources/dist/filament-spatie-lighthouse.css';
+
+        if (file_exists($cssPath)) {
+            FilamentAsset::register([
+                Css::make('filament-spatie-lighthouse-styles', $cssPath)->loadedOnRequest(),
+            ], package: 'filament-spatie-lighthouse');
+        }
+
         // Register event listeners if notifications are enabled
         if (
             config('filament-spatie-lighthouse.notifications.email.enabled') ||
