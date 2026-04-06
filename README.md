@@ -704,9 +704,7 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 
 ## Credits
 
-- **[Rawand](https://github.com/Rawand201)** — author and maintainer
-- **[Spatie](https://spatie.be)** — for [spatie/lighthouse-php](https://github.com/spatie/lighthouse-php) and [spatie/laravel-package-tools](https://github.com/spatie/laravel-package-tools)
-- **[Filament PHP](https://filamentphp.com)** — for the admin panel framework
+- **[Rawand201](https://github.com/Rawand201)** 
 
 See [CREDITS.md](CREDITS.md) for the full list.
 
