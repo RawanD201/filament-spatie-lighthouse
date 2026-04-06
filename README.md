@@ -9,6 +9,10 @@
 
 A [Filament](https://filamentphp.com) plugin that integrates [spatie/lighthouse-php](https://github.com/spatie/lighthouse-php) to run Google Lighthouse audits directly from your admin panel — view scores, performance metrics, failed audits, audit history, and full HTML reports without leaving Filament.
 
+## Demo
+
+<video src="https://github.com/user-attachments/assets/a7eaa997-040e-4ec7-ba17-6f88f48c3aa2" controls width="100%"></video>
+
 ---
 
 ## Table of Contents
