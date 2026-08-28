@@ -5,7 +5,7 @@
 [![PHP Version](https://img.shields.io/packagist/php-v/rawand201/filament-spatie-lighthouse.svg?style=flat-square)](https://packagist.org/packages/rawand201/filament-spatie-lighthouse)
 [![License](https://img.shields.io/packagist/l/rawand201/filament-spatie-lighthouse.svg?style=flat-square)](LICENSE)
 
-![Banner](art/banner.png)
+![Banner](art/banner.jpeg)
 
 A [Filament](https://filamentphp.com) plugin that integrates [spatie/lighthouse-php](https://github.com/spatie/lighthouse-php) to run Google Lighthouse audits directly from your admin panel — view scores, performance metrics, failed audits, audit history, and full HTML reports without leaving Filament.
 
