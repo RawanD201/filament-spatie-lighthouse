@@ -126,6 +126,8 @@ Open a GitHub Issue at `https://github.com/Rawand201/filament-spatie-lighthouse/
 - Expected behaviour vs actual behaviour
 - Any relevant stack trace or log output
 
+> **Security vulnerabilities** should not be reported as public issues. See [SECURITY.md](SECURITY.md) instead.
+
 ---
 
 ## Suggesting Features
